@@ -14,6 +14,7 @@
     bindchange="onChange"
     bindpickstart="onPickStart"
     bindpickend="onPickEnd"
+    immediate-change="{{immediateChange}}"
   >
     <picker-view-column
       jd:for="{{formatColumns}}"

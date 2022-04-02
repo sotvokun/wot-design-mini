@@ -166,7 +166,7 @@ VueComponent({
       if (this.data.loading) return
 
       // 如果当前还在滑动且未停止下来，则锁住先不确认，等滑完再自动确认，避免pickview值未更新
-      if (this.data.isPicking) {
+      if (!this.data.immediateChange && this.data.isPicking) {
         this.setData({
           hasConfirmed: true
         })
@@ -229,14 +229,18 @@ VueComponent({
     },
     noop () { },
     onPickStart () {
-      this.setData({
-        isPicking: true
-      })
+      if (!this.data.immediateChange) {
+        this.setData({
+          isPicking: true
+        })
+      }
     },
     onPickEnd () {
-      this.setData({
-        isPicking: false
-      })
+      if (!this.data.immediateChange) {
+        this.setData({
+          isPicking: false
+        })
+      }
 
       if (this.data.hasConfirmed) {
         this.setData({

@@ -54,5 +54,13 @@ export default {
     type: Boolean,
     value: true
   },
-  ellipsis: Boolean
+  ellipsis: Boolean,
+
+  // 松开手指立即触发 change 事件 (2.21.1 新增)
+  // 若为 false 则需要等待动画播放完毕
+  // 此属性会禁用动画时锁定确认键的设计
+  immediateChange: {
+    type: Boolean,
+    value: true
+  }
 }
